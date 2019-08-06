@@ -4,8 +4,8 @@
 class Esy < Formula
     desc "Native package.json workflow for Reason/OCaml"
     homepage "https://esy.sh"
-    url "https://dev.azure.com/esy-dev/4b89787a-af2b-4e8a-bb58-87b268d428f3/_apis/build/builds/2024/artifacts?artifactName=platform-darwin&api-version=5.2-preview.5&%24format=zip"
-    sha256 "002bc27d561fdf4cb3b118d3f190b889484af2c461cf08c1ac891378e5056dac"
+    url "https://dev.azure.com/esy-dev/4b89787a-af2b-4e8a-bb58-87b268d428f3/_apis/build/builds/2024/artifacts?artifactName=Release&api-version=5.2-preview.5&%24format=zip"
+    sha256 "774d1a6986f5fdb11e5fac18f73c61fdc4baa0cfc0f0a8c78f0afc1b416d8383"
     version "0.5.8"
   
     resource "esy-solve-cudf" do
@@ -16,8 +16,12 @@ class Esy < Formula
     def install
       mkdir_p prefix/"lib"
       mkdir_p prefix/"bin"
-  
-      cp_r "_build/default", prefix
+
+      cp_r "package.json", prefix
+      cp_r "bin/esyInstallRelease.js", prefix/"bin"
+      cp_r "platform-darwin/_build/default/", prefix/"lib"
+      ln_s prefix/"lib/default/esy/bin/esyCommand.exe", prefix/"bin/esy"
+      chmod 0555, prefix/"lib/default/esy/bin/esyCommand.exe"
   
       # install esy-solve-cudf
       esy_solve_cudf_build = buildpath/"esySolveCudf"
