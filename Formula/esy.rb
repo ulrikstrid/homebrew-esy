@@ -22,10 +22,12 @@ class Esy < Formula
       cp_r "platform-darwin/_build/default/", prefix/"lib"
       ln_s prefix/"lib/default/esy/bin/esyCommand.exe", prefix/"bin/esy"
       chmod 0555, prefix/"lib/default/esy/bin/esyCommand.exe"
+      chmod 0555, prefix/"lib/default/esy-build-package/bin/esyBuildPackageCommand.exe"
+      chmod 0555, prefix/"lib/default/esy-build-package/bin/esyRewritePrefixCommand.exe"
   
       # install esy-solve-cudf
       esy_solve_cudf_build = buildpath/"esySolveCudf"
-      esy_solve_cudf_install = prefix/"lib/node_modules/esy-solf-cudf"
+      esy_solve_cudf_install = prefix/"lib/node_modules/esy-solve-cudf"
   
       esy_solve_cudf_build.install resource("esy-solve-cudf")
       mkdir_p esy_solve_cudf_install
@@ -38,4 +40,3 @@ class Esy < Formula
       assert_equal "0.5.8", shell_output("#{bin}/esy --version").strip
     end
   end
-  
