@@ -1,0 +1,24 @@
+name: $(Build.SourceVersion)
+
+trigger:
+  - master
+
+jobs:
+  - job: test_brew
+    displayName: Test brew installation
+    strategy:
+      matrix: {
+        high_sierra: { vmImage: macOS-10.13 },
+        mojave: { vmImage: macOS-10.14 }
+      }
+    pool:
+      vmImage: $(vmImage)
+    steps:
+      - script: brew tap ulrikstrid/homebrew-esy
+        displayName: Add esy tap
+      - script: brew update
+        displayName: Update brew
+      - script: brew install esy
+        displayName: Install esy
+      - script: brew test esy
+        displayName: Test esy
