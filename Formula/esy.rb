@@ -1,6 +1,3 @@
-# Documentation: https://docs.brew.sh/Formula-Cookbook
-#                https://rubydoc.brew.sh/Formula
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 class Esy < Formula
     desc "Native package.json workflow for Reason/OCaml"
     homepage "https://esy.sh"
@@ -18,7 +15,7 @@ class Esy < Formula
       mkdir_p prefix/"bin"
 
       cp_r "package.json", prefix
-      cp_r "bin/esyInstallRelease.js", prefix/"bin"
+      cp_r "platform-darwin/_build/default/bin/esyInstallRelease.js", prefix/"bin"
       cp_r "platform-darwin/_build/default/", prefix/"lib"
       ln_s prefix/"lib/default/esy/bin/esyCommand.exe", prefix/"bin/esy"
       chmod 0555, prefix/"lib/default/esy/bin/esyCommand.exe"
