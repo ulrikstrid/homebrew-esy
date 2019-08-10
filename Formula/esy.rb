@@ -4,8 +4,8 @@
 class Esy < Formula
     desc "Native package.json workflow for Reason/OCaml"
     homepage "https://esy.sh"
-    url "https://dev.azure.com/esy-dev/4b89787a-af2b-4e8a-bb58-87b268d428f3/_apis/build/builds/2024/artifacts?artifactName=Release&api-version=5.2-preview.5&%24format=zip"
-    sha256 "774d1a6986f5fdb11e5fac18f73c61fdc4baa0cfc0f0a8c78f0afc1b416d8383"
+    url "https://registry.npmjs.org/esy/-/esy-0.5.8.tgz"
+    sha256 "f2cec5e6556172141bb399d1dcef7db4b9d881b0bed9c9749c0eebd95584b739"
     version "0.5.8"
   
     resource "esy-solve-cudf" do
