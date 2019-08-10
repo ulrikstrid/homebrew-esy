@@ -17,8 +17,8 @@ class Esy < Formula
       cp_r "package.json", prefix
       cp_r "platform-darwin/_build/default/bin/esyInstallRelease.js", prefix/"bin"
       cp_r "platform-darwin/_build/default/", prefix/"lib"
-      ln_s prefix/"lib/default/esy/bin/esyCommand.exe", prefix/"bin/esy"
-      chmod 0555, prefix/"lib/default/esy/bin/esyCommand.exe"
+      ln_s prefix/"lib/default/bin/esy.exe", prefix/"bin/esy"
+      chmod 0555, prefix/"lib/default/bin/esyCommand.exe"
       chmod 0555, prefix/"lib/default/esy-build-package/bin/esyBuildPackageCommand.exe"
       chmod 0555, prefix/"lib/default/esy-build-package/bin/esyRewritePrefixCommand.exe"
   
