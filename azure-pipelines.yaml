@@ -1,11 +1,11 @@
-name: $(Build.SourceVersion)
+name: $(Build.BuildId)
 
 trigger:
   - master
 
 jobs:
   - job: test_brew
-    displayName: Test brew installation
+    displayName: Test brew installation -
     strategy:
       matrix: {
         high_sierra: { vmImage: macOS-10.13 },
